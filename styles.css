@@ -1,3 +1,21 @@
+.donate-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.image-inner {
+  position: relative;
+}
+
+.image-inner .donate-area {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  z-index: 2;
+}
 /* charity: water Brand Colors & Fonts
 
 Primary Colors:
@@ -23,6 +41,81 @@ Fonts:
   This CSS uses the provided color palette and beginner-friendly styles.
 */
 
+/* Navigation Header Styles */
+.nav-header {
+  background-color: #FFC907; /* Bright yellow headliner */
+  padding: 10px 0;
+  position: fixed; /* Stay at top of page */
+  width: 100%;
+  top: 0;
+  z-index: 1000; /* Stay above other content */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  color: #000; /* Black text */
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  transition: color 0.3s, background 0.3s;
+}
+
+.nav-link:hover {
+  color: #000; /* Black text on hover */
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #FFC907; /* Match headliner color */
+  min-width: 150px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  padding: 10px 0;
+  border-radius: 4px;
+  list-style: none;
+  transition: opacity 0.3s;
+}
+
+.nav-item:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li a {
+  color: #000; /* Black text */
+  text-decoration: none;
+  padding: 8px 15px;
+  display: block;
+  transition: background 0.3s, color 0.3s;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #FFD84A; /* Slightly lighter yellow on hover */
+  color: #000;
+}
+
+/* Add padding to top of container to account for fixed nav */
+.container {
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 /* Set up the main font and background color for the whole page */
 body {
   background-color: #f4f8fb; /* Soft light blue for a fresh look */
@@ -30,6 +123,12 @@ body {
   margin: 0;
   padding: 0;
   color: #222;
+  min-height: 100vh; /* Only as tall as the viewport */
+  /* Use the logo image as background, showing the full image */
+  background-image: url('img/charitywater logo.png');
+  background-size: contain;  /* Show the entire image while maintaining aspect ratio */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Don't repeat the image */
 }
 
 /* Add a slight shadow and rounded corners to each section for depth */
@@ -67,6 +166,16 @@ section {
   letter-spacing: 1px;
   margin-bottom: 15px;
   text-shadow: 0 2px 8px rgba(0,0,0,0.15); /* Soft shadow for readability */
+  /* Fade in and out animation */
+  opacity: 0;
+  animation: fadeInOut 3s infinite;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 /* Style the subheadline */
@@ -195,4 +304,153 @@ section {
   .impact-image {
     width: 300px;
   }
+}
+
+/* Responsive Navigation */
+@media (max-width: 700px) {
+  .nav-menu {
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+  }
+  .nav-item {
+    width: 100%;
+  }
+  .nav-link {
+    text-align: left;
+    padding: 12px 16px;
+  }
+}
+
+/* Responsive Content Layout */
+@media (max-width: 700px) {
+  .container {
+    padding: 10px;
+  }
+  .content {
+    padding: 0 5px;
+  }
+  .image-wrapper {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .image-frame {
+    width: 100%;
+    max-width: 100%;
+  }
+  .image-inner img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+  }
+}
+
+/* Responsive Social Icons */
+@media (max-width: 500px) {
+  .social-icons {
+    left: 10px;
+    bottom: 10px;
+    gap: 8px;
+  }
+  .social-icon {
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+  }
+}
+
+/* Logo Image Styles */
+.logo img {
+  width: 100px;      /* Adjust width as needed */
+  height: auto;
+  display: block;
+  margin-top: 30px;  /* Move logo down from the top */
+  margin-bottom: 10px; /* Space between image and logo-text */
+}
+
+/* Social Media Icons */
+.social-icons {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  gap: 15px;
+  z-index: 1000;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFC907;
+  border-radius: 50%;
+  padding: 6px;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px) scale(1.1);
+  background-color: #FFD84A;
+}
+
+.social-icon img {
+  width: 100%;
+  height: 100%;
+  filter: brightness(0); /* Makes the icons black */
+}
+
+/* Donate Button Area Styles */
+.donate-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.donate-button {
+  background-color: #FFC907; /* Yellow */
+  color: #000; /* Black text */
+  border: none;
+  border-radius: 6px;
+  padding: 16px 40px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(46, 157, 247, 0.10);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.donate-button:hover {
+  background-color: #FFD84A; /* Lighter yellow on hover */
+  transform: scale(1.05);
+}
+
+/* Footer Styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content, .image-wrapper {
+  width: 100%;
+}
+
+.site-footer {
+  width: 100%;
+  background: #FFC907;
+  color: #222;
+  text-align: center;
+  padding: 18px 0;
+  font-size: 1em;
+  clear: both;
+  margin-top: auto;  /* This pushes the footer to the bottom */
+  border-top: 2px solid #2E9DF7;
+}
+
+.site-footer p {
+  margin: 0;
 }
